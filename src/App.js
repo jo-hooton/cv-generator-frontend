@@ -1,28 +1,52 @@
 import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom'
+
+import Nav from './components/Nav.js'
+import Header from './components/Header'
+import SignInForm from './components/SignInForm'
 import logo from './logo.svg';
+
 import './App.css';
 
 class App extends Component {
+
+  state = {
+    email: null
+  }
+
+  signin = (email) => {
+    localStorage.setItem('email', email)
+    this.setState({ email })
+    this.props.history.push('/inventory')
+  }
+
+  signout = () => {
+    localStorage.removeItem('email')
+    this.setState({ email: null })
+    this.props.history.push('/signin')
+  }
+
+  componentDidMount() {
+    const email = localStorage.getItem('email')
+    if (email) {
+      this.signin(email)
+      this.props.history.push('/inventory')
+    } else {
+      this.props.history.push('/signin')
+    }
+  }
+
   render() {
+    const { email } = this.state
+    const { signin, signout } = this
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        < Nav />
+        <Header email={email} signout={signout} />
+        <Route path='/signin' render={props => <SignInForm {...props} signin={signin} />} />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default withRouter(App)
