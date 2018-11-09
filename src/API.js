@@ -3,6 +3,7 @@ class API {
       this.baseUrl = 'http://localhost:3001'
       this.signinUrl = this.baseUrl + '/signin'
       this.validateUrl = this.baseUrl + '/validate'
+      this.dashboardUrl = this.baseUrl + '/dashboard'
     }
   
     static signin (email, password) {
@@ -17,11 +18,13 @@ class API {
     }
   
     static validate () {
-      const email = localStorage.getItem('email')
+      const token = localStorage.getItem('token')
       return fetch(this.validateUrl, {
-        headers: {'Authorization': email}
+        headers: {'Authorization': token}
       }).then(resp => resp.json())
     }
+
+    
   }
   
   API.init()

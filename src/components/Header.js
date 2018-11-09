@@ -1,10 +1,9 @@
 import React from 'react'
 
-import logo from '../logo.svg'
 
 const Header = props =>
   <header className='App-header'>
-    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     <h1 className='App-title'>
       {
         props.email ?

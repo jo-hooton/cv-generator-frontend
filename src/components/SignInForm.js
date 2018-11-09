@@ -18,7 +18,7 @@ class SignInForm extends React.Component {
         if (data.error) {
           alert('Wrong!')
         } else {
-          this.props.signin(data.email)
+          this.props.signin(data)
         }
       })
   }
