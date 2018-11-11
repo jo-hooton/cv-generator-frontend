@@ -1,8 +1,12 @@
 import React from 'react';
+import { checkPropTypes } from 'prop-types';
 
-const Nav = () => {
+const Nav = (props) => {
     return (
-        <div>CV Generator Nav</div>
+        <div>
+            CV Generator Nav
+            {props.email ? <button>Sign Out</button> : null}
+        </div>
     )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import CVHeader from './CVHeader'
 
 class CVContainer extends React.Component {
     render() {

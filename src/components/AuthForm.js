@@ -5,22 +5,34 @@ import API from '../API'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
-class SignInForm extends React.Component {
+class AuthForm extends React.Component {
   state = {
     email: '',
     password: ''
   }
 
   handleSubmit = () => {
+    if (this.props.location.pathname === '/signin') {
     const { email, password } = this.state
     API.signin(email, password)
       .then(data => {
         if (data.error) {
           alert('Wrong!')
         } else {
-          this.props.signin(data)
+          this.props.authenticate(data)
         }
       })
+    } else {
+    const { email, password } = this.state
+    API.signup(email, password)
+      .then(data => {
+        if (data.error) {
+          alert('Wrong!')
+        } else {
+          this.props.authenticate(data)
+        }
+      })
+    }
   }
 
   handleChange = event =>
@@ -59,4 +71,4 @@ class SignInForm extends React.Component {
   }
 }
 
-export default SignInForm
+export default AuthForm

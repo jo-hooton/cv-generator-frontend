@@ -4,7 +4,7 @@ import { Route, withRouter } from 'react-router-dom'
 import API from './API'
 import Nav from './components/Nav.js'
 import Header from './components/Header'
-import SignInForm from './components/SignInForm'
+import AuthForm from './components/AuthForm'
 import Dashboard from './components/Dashboard'
 
 import './App.css';
@@ -16,6 +16,7 @@ class App extends Component {
   }
 
   signin = (user) => {
+    console.log(user)
     localStorage.setItem('token', user.token)
     this.setState({ email: user.email })
     this.props.history.push('/dashboard')
@@ -32,7 +33,7 @@ class App extends Component {
     API.validate()
     .then(user => {
       this.signin(user)
-      this.props/history.push('/dashboard')
+      this.props.history.push('/dashboard')
     })
     .catch(error => this.props.history.push('/signin'))
   }
@@ -42,10 +43,11 @@ class App extends Component {
     const { signin, signout } = this
     return (
       <div className="App">
-        < Nav />
+        < Nav email={this.state.email} />
         <Header email={email} signout={signout} />
-        <Route path='/signin' render={props => <SignInForm {...props} signin={signin} />} />
-    <Route path ='/dashboard' render={<Dashboard />} />
+        <Route path='/signin' render={props => <AuthForm {...props} authenticate={signin} />} />
+        <Route path='/signup' render={props => <AuthForm {...props} authenticate={signin} />} />
+        <Route path='/dashboard' render={() => <Dashboard />} />
       </div>
     )
   }
