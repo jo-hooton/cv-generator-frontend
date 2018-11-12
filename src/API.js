@@ -34,6 +34,82 @@ class API {
         })
       }).then(resp => resp.json())
     }
+
+    static newCV (user_id, title, bio, experience, education, skills) {
+      return fetch('http://localhost:3001/cvs'), {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          user_id,
+          title,
+          bio, 
+          experience,
+          education,
+          skills
+        })
+      }
+    }
+
+    static newTextItem (title, content, cv_id) {
+      return fetch('http://localhost:3001/text_items'), {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringyfy({
+          title,
+          content,
+          cv_id
+        })
+      }
+    }
+    
+    static newList (title, cv_id) {
+      return fetch('http://localhost:3001/lists'), {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringyfy({
+          title,
+          cv_id
+        })
+      }
+    }
+
+    static newListItem (name, sub_heading, content, list_id) {
+      return fetch('http://localhost:3001/list_items'), {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringyfy({
+          name,
+          sub_heading,
+          content, 
+          list_id
+        })
+      }
+    }
+
+    static newContactDetail (address, phone_number, cv_id) {
+      return fetch('http://localhost:3001/contact_details'), {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringyfy({
+          address,
+          phone_number,
+          cv_id
+        })
+      }
+    }
+
+    static newSkill (name, percentage, cv_id) {
+      return fetch('http://localhost:3001/skills'), {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringyfy({
+          name,
+          percentage,
+          cv_id
+        })
+      }
+    }
+
     
   }
   

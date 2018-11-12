@@ -6,21 +6,118 @@ import Button from '@material-ui/core/Button'
 class NewCVForm extends React.Component {
     
     state = {
+        numExperiences: 1,
+        numEducations: 1,
         title: '',
         bio: '',
-        photo: '',
         experience: [],
         education: [],
         skills: []
     }
 
+    addExperience = () => {
+        this.setState({
+            numExperiences: this.state.numExperiences += 1
+        })
+    }
+
+    addEducation = () => {
+        this.setState({
+            numEducations: this.state.numEducations += 1
+        })
+    }
+
+
     handleSubmit = () => {
-        const { title, bio } = this.state
+        const { title, bio, experience, education, skills } = this.state
         
       }
     
     handleChange = event =>
         this.setState({ [event.target.name]: event.target.value })
+
+    showExperienceForms = () => {
+        let counter = 0
+        let expArr = []
+        for (counter ; counter < this.state.numExperiences; counter++) {
+                  expArr.push( <>
+                    <TextField
+                      id='positionInput'
+                      label='Position'
+                      value={this.state.position}
+                      onChange={this.handleChange}
+                      margin='normal'
+                      name='position'
+                      type='position'
+                    />
+                    <br />
+                    <TextField
+                      id='companyInput'
+                      label='Company'
+                      value={this.state.company}
+                      onChange={this.handleChange}
+                      margin='normal'
+                      name='company'
+                      type='company'
+                    />
+                    <br />
+                    <TextField
+                      id='experienceDatesInput'
+                      label='Dates'
+                      value={this.state.dates}
+                      onChange={this.handleChange}
+                      margin='normal'
+                      name='experienceDates'
+                      type='experienceDates'
+                    />
+                    <br />
+                  </> )
+        
+    }
+    return expArr
+    }
+    showEducationForms = () => {
+        let counter = 0
+        let eduArr = []
+        for (counter ; counter < this.state.numEducations; counter++) {
+                  eduArr.push( <>
+                    <TextField
+                        id='qualificationInput'
+                        label='Qualification'
+                        value={this.state.qualification}
+                        onChange={this.handleChange}
+                        margin='normal'
+                        name='qualification'
+                        type='qualification'
+                        />
+                        <br />
+                    <TextField
+                        id='institutionInput'
+                        label='Institution'
+                        value={this.state.institution}
+                        onChange={this.handleChange}
+                        margin='normal'
+                        name='institution'
+                        type='institution'
+                        />
+                        <br />
+                    <TextField
+                        id='datesInput'
+                        label='Dates'
+                        value={this.state.dates}
+                        onChange={this.handleChange}
+                        margin='normal'
+                        name='dates'
+                        type='dates'
+                        />
+                    <br />
+                  </> )
+        
+        }
+        return eduArr
+    }
+    
+
     
     render() {
     return (
@@ -56,71 +153,17 @@ class NewCVForm extends React.Component {
         />
         <br />
         <h3>Experience</h3>
-        <TextField
-          id='positionInput'
-          label='Position'
-          value={this.state.position}
-          onChange={this.handleChange}
-          margin='normal'
-          name='position'
-          type='position'
-        />
-        <br />
-        <TextField
-          id='companyInput'
-          label='Company'
-          value={this.state.company}
-          onChange={this.handleChange}
-          margin='normal'
-          name='company'
-          type='company'
-        />
-        <br />
-        <TextField
-          id='datesInput'
-          label='Dates'
-          value={this.state.dates}
-          onChange={this.handleChange}
-          margin='normal'
-          name='dates'
-          type='dates'
-        />
-        <br />
-        <Button variant='contained' color='primary'>
+        {
+            this.showExperienceForms()
+         }
+        <Button onClick={this.addExperience} variant='contained' color='primary'>
           +
         </Button>
         <h3>Education</h3>
-        <TextField
-          id='qualificationInput'
-          label='Qualification'
-          value={this.state.qualification}
-          onChange={this.handleChange}
-          margin='normal'
-          name='qualification'
-          type='qualification'
-        />
-        <br />
-        <TextField
-          id='institutionInput'
-          label='Institution'
-          value={this.state.institution}
-          onChange={this.handleChange}
-          margin='normal'
-          name='institution'
-          type='institution'
-        />
-        <br />
-        <TextField
-          id='datesInput'
-          label='Dates'
-          value={this.state.dates}
-          onChange={this.handleChange}
-          margin='normal'
-          name='dates'
-          type='dates'
-        />
-        <br />
-        <Button variant='contained' color='primary'>
+        {
+            this.showEducationForms()
+         }
+        <Button onClick={this.addEducation} variant='contained' color='primary'>
           +
         </Button>
         <h3>Skills</h3>
@@ -142,16 +185,6 @@ class NewCVForm extends React.Component {
           margin='normal'
           name='skillfulness'
           type='skillfulness'
-        />
-        <br />
-        <TextField
-          id='datesInput'
-          label='Dates'
-          value={this.state.dates}
-          onChange={this.handleChange}
-          margin='normal'
-          name='dates'
-          type='dates'
         />
         <br />
         <Button variant='contained' color='primary'>

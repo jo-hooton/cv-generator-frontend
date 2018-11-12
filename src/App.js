@@ -47,7 +47,7 @@ class App extends Component {
         <Header email={email} signout={signout} />
         <Route path='/signin' render={props => <AuthForm {...props} authenticate={signin} />} />
         <Route path='/signup' render={props => <AuthForm {...props} authenticate={signin} />} />
-        <Route path='/dashboard' render={() => <Dashboard />} />
+        <Route path='/dashboard' render={props => <Dashboard {...props} email={email} />} />
       </div>
     )
   }
