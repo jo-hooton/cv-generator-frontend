@@ -152,7 +152,7 @@ class NewCVForm extends React.Component {
 
         <br />
         <Button
-          onClick={this.saveCV}
+          onClick={() => this.saveCV()}
           //   this.props.newCV({
           //     user_id: "",
           //     title: this.state.title,

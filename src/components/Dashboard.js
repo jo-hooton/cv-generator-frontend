@@ -6,7 +6,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        {/* < NewCVForm /> */}
+        <NewCVForm />
         <CVContainer />
       </div>
     );
