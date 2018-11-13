@@ -1,4 +1,8 @@
-import React from 'react'
+import React from "react";
+import ExperienceListItem from "./ExperienceListItem";
+import EducationListItem from "./EducationListItem";
+import SkillListItem from "./SkillListItem";
+import API from "../API";
 
 import CVContainer from './CVContainer'
 
@@ -19,209 +23,160 @@ class NewCVForm extends React.Component {
         contactDetails: {}
     }
 
-    addExperience = () => {
-        this.setState({
-            numExperiences: this.state.numExperiences += 1
-        })
+  addExperience = () => {
+    this.setState({
+      numExperiences: (this.state.numExperiences += 1)
+    });
+  };
+
+  addEducation = () => {
+    this.setState({
+      numEducations: (this.state.numEducations += 1)
+    });
+  };
+
+  addSkill = () => {
+    this.setState({
+      numSkills: (this.state.numSkills += 1)
+    });
+  };
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+
+  handleExperienceClick = item => {
+    this.setState({
+      experience: [...this.state.experience, item]
+    });
+  };
+
+
+  handleEducationClick = item => {
+    this.setState({
+      education: [...this.state.education, item]
+    });
+  };
+  handleSkillClick = item => {
+    this.setState({
+      skills: [...this.state.skill, item]
+    });
+  };
+
+  showExperienceForms = () => {
+    let counter = 0;
+    let expArr = [];
+    for (counter; counter < this.state.numExperiences; counter++) {
+      expArr.push(
+        <ExperienceListItem handleClick={this.handleExperienceClick} />
+      );
+
+    }
+    return expArr;
+  };
+  showEducationForms = () => {
+    let counter = 0;
+    let eduArr = [];
+    for (counter; counter < this.state.numEducations; counter++) {
+      eduArr.push(
+        <EducationListItem handleClick={this.handleEducationClick} />
+      );
     }
 
-    addEducation = () => {
-        this.setState({
-            numEducations: this.state.numEducations += 1
-        })
-    }
+    return eduArr;
+  };
 
-    addSkill = () => {
-        this.setState({
-            numSkills: this.state.numSkills += 1
-        })
+  showSkillsForms = () => {
+    let counter = 0;
+    let skillArr = [];
+    for (counter; counter < this.state.numSkills; counter++) {
+      skillArr.push(<SkillListItem handleClick={this.handleSkillClick} />);
     }
+    return skillArr;
+  };
 
+  saveCV = () => {
+    const { title, bio, experience, education, skills } = this.state;
+    API.newCV(title, bio, experience, education, skills).then(data =>
+      console.log(data)
+    );
+  };
 
-    handleSubmit = () => {
-        const { title, bio, experience, education, skills } = this.state
-        
-      }
-    
-    handleChange = event =>
-        this.setState({ [event.target.name]: event.target.value })
+   
 
-    showExperienceForms = () => {
-        let counter = 0
-        let expArr = []
-        for (counter ; counter < this.state.numExperiences; counter++) {
-                  expArr.push( <>
-                    <TextField
-                      id='positionInput'
-                      label='Position'
-                      value={'position' + this.state.numExperiences}
-                      onChange={this.handleChange}
-                      margin='normal'
-                      name='position'
-                      type='position'
-                    />
-                    <br />
-                    <TextField
-                      id='companyInput'
-                      label='Company'
-                      value={'company' + this.state.numExperiences}
-                      onChange={this.handleChange}
-                      margin='normal'
-                      name='company'
-                      type='company'
-                    />
-                    <br />
-                    <TextField
-                      id='experienceDatesInput'
-                      label='Dates'
-                      value={'dates' + this.state.numExperiences}
-                      onChange={this.handleChange}
-                      margin='normal'
-                      name='experienceDates'
-                      type='experienceDates'
-                    />
-                    <br />
-                        ____________
-                    <br />
-                  </> )
-        
-    }
-    return expArr
-    }
-    showEducationForms = () => {
-        let counter = 0
-        let eduArr = []
-        for (counter ; counter < this.state.numEducations; counter++) {
-                  eduArr.push( <>
-                    <TextField
-                        id='qualificationInput'
-                        label='Qualification'
-                        value={this.state.qualification}
-                        onChange={this.handleChange}
-                        margin='normal'
-                        name='qualification'
-                        type='qualification'
-                        />
-                        <br />
-                    <TextField
-                        id='institutionInput'
-                        label='Institution'
-                        value={this.state.institution}
-                        onChange={this.handleChange}
-                        margin='normal'
-                        name='institution'
-                        type='institution'
-                        />
-                        <br />
-                    <TextField
-                        id='datesInput'
-                        label='Dates'
-                        value={this.state.dates}
-                        onChange={this.handleChange}
-                        margin='normal'
-                        name='dates'
-                        type='dates'
-                        />
-                    <br />
-                        ____________
-                    <br />
-                  </> )
-        
-        }
-        return eduArr
-    }
-    showSkillsForms = () => {
-        let counter = 0
-        let skillArr = []
-        for (counter ; counter < this.state.numSkills; counter++) {
-                    skillArr.push( <>
-                    <TextField
-                        id='skillInput'
-                        label='Skill'
-                        value={this.state.skill}
-                        onChange={this.handleChange}
-                        margin='normal'
-                        name='skill'
-                        type='skill'
-                    />
-                    <br />
-                    <TextField
-                    id='skillfulnessInput'
-                    label='Skillfulness out of 10'
-                    value={this.state.skillfulness}
-                    onChange={this.handleChange}
-                    margin='normal' 
-                    name='skillfulness'
-                    type='skillfulness'
-                    />
-                    <br />
-                        ____________
-                    <br />
-                  </> )
-        
-        }
-        return skillArr
-    }
-    
-
-    
-    render() {
+  render() {
     return (
-        <div>
+      <div>
         <h2>Create New CV</h2>
         <TextField
-          id='cvTitleInput'
-          label='Title'
+          id="cvTitleInput"
+          label="Title"
           value={this.state.title}
           onChange={this.handleChange}
-          margin='normal'
-          name='title'
+          margin="normal"
+          name="title"
         />
         <br />
         <TextField
-          id='bioInput'
-          label='Bio'
+          id="bioInput"
+          label="Bio"
           value={this.state.bio}
           onChange={this.handleChange}
-          margin='normal'
-          name='bio'
-          type='bio'
+          margin="normal"
+          name="bio"
+          type="bio"
         />
         <br />
         <TextField
-          id='photoInput'
-          label='Photo URL'
+          id="photoInput"
+          label="Photo URL"
           value={this.state.photo}
           onChange={this.handleChange}
-          margin='normal'
-          name='photo'
-          type='photo'
+          margin="normal"
+          name="photo"
+          type="photo"
         />
         <br />
         <h3>Experience</h3>
-        {
-            this.showExperienceForms()
-         }
-        <Button onClick={this.addExperience} variant='contained' color='primary'>
-          +
+        {this.showExperienceForms()}
+        <Button
+          onClick={this.addExperience}
+          variant="contained"
+          color="primary"
+        >
+          Add More Experience
         </Button>
+        <br />
         <h3>Education</h3>
-        {
-            this.showEducationForms()
-         }
-        <Button onClick={this.addEducation} variant='contained' color='primary'>
-          +
+        {this.showEducationForms()}
+        <Button onClick={this.addEducation} variant="contained" color="primary">
+          Add More Education
         </Button>
         <h3>Skills</h3>
-        {
-            this.showSkillsForms()
-         }
-        <Button onClick={this.addSkill} variant='contained' color='primary'>
-          +
+
+        {this.showSkillsForms()}
+        <Button onClick={this.addSkill} variant="contained" color="primary">
+          Add a Skill
+
         </Button>
         <br />
+
         <br />
-        <Button onClick={this.handleSubmit} variant='contained' color='primary'>
+        <Button
+          onClick={this.saveCV}
+          //   this.props.newCV({
+          //     user_id: "",
+          //     title: this.state.title,
+          //     bio: this.state.bio,
+          //     experience: this.state.experience,
+          //     education: this.state.education,
+          //     skill: this.state.skill
+          //   })
+          // }
+          variant="contained"
+          color="primary"
+        >
           Save CV
         </Button>
 
@@ -234,9 +189,8 @@ class NewCVForm extends React.Component {
         // contactDetails={this.state.contactDetails}
          /> 
       </div>
-
-    )
+    );
   }
 }
 
-export default NewCVForm
+export default NewCVForm;
