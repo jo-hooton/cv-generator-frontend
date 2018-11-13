@@ -1,16 +1,14 @@
-import React from "react";
-import NewCVForm from "./NewCVForm";
-import CVContainer from "./CVContainer";
+import React from 'react'
+import NewCVForm from './NewCVForm'
 
 class Dashboard extends React.Component {
-  render() {
-    return (
-      <div>
-        {/* < NewCVForm /> */}
-        <CVContainer />
-      </div>
-    );
-  }
+    render(){
+        return <div>
+            < NewCVForm />
+            
+        </div>
+    }
+
 }
 
 export default Dashboard;
