@@ -8,7 +8,7 @@ class Dashboard extends React.Component {
             
         </div>
     }
- 
+
 }
 
-export default Dashboard
+export default Dashboard;
