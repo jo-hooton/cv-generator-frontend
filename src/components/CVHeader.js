@@ -3,7 +3,9 @@ import React from 'react';
 const CVHeader = (props) => {
     return (
         <div>
-            <h1>{this.props.title}</h1>
+            <h1>
+            {/* {this.props.title} */}
+            </h1>
             Photo
         </div>
     )

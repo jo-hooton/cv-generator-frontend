@@ -226,12 +226,12 @@ class NewCVForm extends React.Component {
         </Button>
 
         < CVContainer 
-        title={this.state.title}
-        bio={this.state.bio}
-        experience={this.state.experience}
-        education={this.state.education}
-        skills={this.state.skills}
-        contactDetails={this.state.contactDetails}
+        // title={this.state.title}
+        // bio={this.state.bio}
+        // experience={this.state.experience}
+        // education={this.state.education}
+        // skills={this.state.skills}
+        // contactDetails={this.state.contactDetails}
          /> 
       </div>
 

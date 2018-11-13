@@ -9,12 +9,24 @@ const CVContainer = (props) => {
     
     return (
         <div>CV Container
-            <CVHeader title={this.props.title} />
-            <CVSkills skills={this.props.skills} />
-            <CVContactDetails contactDetails={this.props.contactDetails} />
-            <CVTextItem heading='Bio' content={this.props.bio} />
-            <CVList list={this.props.experience} />
-            <CVList list={this.props.education} />
+            <CVHeader 
+            // title={this.props.title} 
+            />
+            <CVSkills 
+            // skills={this.props.skills}
+             />
+            <CVContactDetails
+            //  contactDetails={this.props.contactDetails} 
+             />
+            <CVTextItem 
+            // heading='Bio' content={this.props.bio} 
+            />
+            <CVList 
+            // list={this.props.experience} 
+            />
+            <CVList 
+            // list={this.props.education} 
+            />
         </div>
     )
 

@@ -5,7 +5,9 @@ const CVList = (props) => {
     return (
         <div>
             List
-            < CVListItem list={this.props.list} />
+            < CVListItem 
+            // list={this.props.list} 
+            />
         </div>
     )
 }
