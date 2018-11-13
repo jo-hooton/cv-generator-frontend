@@ -1,7 +1,7 @@
 import React from "react";
-import ExperienceListItem from "./ExperienceListItem";
-import EducationListItem from "./EducationListItem";
-import SkillListItem from "./SkillListItem";
+import ExperienceFormItem from "./ExperienceFormItem";
+import EducationFormItem from "./EducationFormItem";
+import SkillFormItem from "./SkillFormItem";
 import API from "../API";
 
 import CVContainer from './CVContainer'
@@ -69,7 +69,7 @@ class NewCVForm extends React.Component {
     let expArr = [];
     for (counter; counter < this.state.numExperiences; counter++) {
       expArr.push(
-        <ExperienceListItem handleClick={this.handleExperienceClick} />
+        <ExperienceFormItem handleClick={this.handleExperienceClick} />
       );
 
     }
@@ -80,7 +80,7 @@ class NewCVForm extends React.Component {
     let eduArr = [];
     for (counter; counter < this.state.numEducations; counter++) {
       eduArr.push(
-        <EducationListItem handleClick={this.handleEducationClick} />
+        <EducationFormItem handleClick={this.handleEducationClick} />
       );
     }
 
@@ -91,7 +91,7 @@ class NewCVForm extends React.Component {
     let counter = 0;
     let skillArr = [];
     for (counter; counter < this.state.numSkills; counter++) {
-      skillArr.push(<SkillListItem handleClick={this.handleSkillClick} />);
+      skillArr.push(<SkillFormItem handleClick={this.handleSkillClick} />);
     }
     return skillArr;
   };

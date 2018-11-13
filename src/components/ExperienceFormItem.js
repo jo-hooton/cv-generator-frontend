@@ -2,7 +2,7 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-class ListItem extends React.Component {
+class ExperienceFormItem extends React.Component {
   state = {
     position: "",
     company: "",
@@ -62,4 +62,4 @@ class ListItem extends React.Component {
   }
 }
 
-export default ListItem;
+export default ExperienceFormItem;
