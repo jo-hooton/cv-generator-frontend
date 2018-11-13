@@ -1,8 +1,11 @@
 import React from 'react';
 
-const CVTextItem = () => {
+const CVTextItem = (props) => {
     return (
-        <div>CVTextItem</div>
+        <div>
+            <h3>{this.props.heading}</h3>
+            <p>{this.props.content}</p>
+        </div>
     )
 }
 

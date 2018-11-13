@@ -1,5 +1,7 @@
 import React from 'react'
 
+import CVContainer from './CVContainer'
+
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
@@ -8,11 +10,13 @@ class NewCVForm extends React.Component {
     state = {
         numExperiences: 1,
         numEducations: 1,
+        numSkills: 1,
         title: '',
         bio: '',
         experience: [],
         education: [],
-        skills: []
+        skills: [],
+        contactDetails: {}
     }
 
     addExperience = () => {
@@ -24,6 +28,12 @@ class NewCVForm extends React.Component {
     addEducation = () => {
         this.setState({
             numEducations: this.state.numEducations += 1
+        })
+    }
+
+    addSkill = () => {
+        this.setState({
+            numSkills: this.state.numSkills += 1
         })
     }
 
@@ -44,7 +54,7 @@ class NewCVForm extends React.Component {
                     <TextField
                       id='positionInput'
                       label='Position'
-                      value={this.state.position}
+                      value={'position' + this.state.numExperiences}
                       onChange={this.handleChange}
                       margin='normal'
                       name='position'
@@ -54,7 +64,7 @@ class NewCVForm extends React.Component {
                     <TextField
                       id='companyInput'
                       label='Company'
-                      value={this.state.company}
+                      value={'company' + this.state.numExperiences}
                       onChange={this.handleChange}
                       margin='normal'
                       name='company'
@@ -64,12 +74,14 @@ class NewCVForm extends React.Component {
                     <TextField
                       id='experienceDatesInput'
                       label='Dates'
-                      value={this.state.dates}
+                      value={'dates' + this.state.numExperiences}
                       onChange={this.handleChange}
                       margin='normal'
                       name='experienceDates'
                       type='experienceDates'
                     />
+                    <br />
+                        ____________
                     <br />
                   </> )
         
@@ -111,10 +123,44 @@ class NewCVForm extends React.Component {
                         type='dates'
                         />
                     <br />
+                        ____________
+                    <br />
                   </> )
         
         }
         return eduArr
+    }
+    showSkillsForms = () => {
+        let counter = 0
+        let skillArr = []
+        for (counter ; counter < this.state.numSkills; counter++) {
+                    skillArr.push( <>
+                    <TextField
+                        id='skillInput'
+                        label='Skill'
+                        value={this.state.skill}
+                        onChange={this.handleChange}
+                        margin='normal'
+                        name='skill'
+                        type='skill'
+                    />
+                    <br />
+                    <TextField
+                    id='skillfulnessInput'
+                    label='Skillfulness out of 10'
+                    value={this.state.skillfulness}
+                    onChange={this.handleChange}
+                    margin='normal' 
+                    name='skillfulness'
+                    type='skillfulness'
+                    />
+                    <br />
+                        ____________
+                    <br />
+                  </> )
+        
+        }
+        return skillArr
     }
     
 
@@ -167,27 +213,10 @@ class NewCVForm extends React.Component {
           +
         </Button>
         <h3>Skills</h3>
-        <TextField
-          id='skillInput'
-          label='Skill'
-          value={this.state.skill}
-          onChange={this.handleChange}
-          margin='normal'
-          name='skill'
-          type='skill'
-        />
-        <br />
-        <TextField
-          id='skillfulnessInput'
-          label='Skillfulness out of 10'
-          value={this.state.skillfulness}
-          onChange={this.handleChange}
-          margin='normal'
-          name='skillfulness'
-          type='skillfulness'
-        />
-        <br />
-        <Button variant='contained' color='primary'>
+        {
+            this.showSkillsForms()
+         }
+        <Button onClick={this.addSkill} variant='contained' color='primary'>
           +
         </Button>
         <br />
@@ -195,6 +224,15 @@ class NewCVForm extends React.Component {
         <Button onClick={this.handleSubmit} variant='contained' color='primary'>
           Save CV
         </Button>
+
+        < CVContainer 
+        title={this.state.title}
+        bio={this.state.bio}
+        experience={this.state.experience}
+        education={this.state.education}
+        skills={this.state.skills}
+        contactDetails={this.state.contactDetails}
+         /> 
       </div>
 
     )
