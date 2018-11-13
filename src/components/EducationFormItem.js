@@ -2,7 +2,7 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-class EducationListItem extends React.Component {
+class EducationFormItem extends React.Component {
   state = {
     qualification: "",
     institution: "",
@@ -62,4 +62,4 @@ class EducationListItem extends React.Component {
   }
 }
 
-export default EducationListItem;
+export default EducationFormItem;

@@ -1,8 +1,13 @@
 import React from 'react';
 
-const CVHeader = () => {
+const CVHeader = (props) => {
     return (
-        <div>CV Header</div>
+        <div>
+            <h1>
+            {/* {this.props.title} */}
+            </h1>
+            Photo
+        </div>
     )
 }
 

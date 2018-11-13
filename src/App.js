@@ -6,13 +6,12 @@ import Nav from "./components/Nav.js";
 import Header from "./components/Header";
 import AuthForm from "./components/AuthForm";
 import Dashboard from "./components/Dashboard";
-import NewCVForm from "./components/NewCVForm";
+// import NewCVForm from "./components/NewCVForm";
 import "./App.css";
 
 class App extends Component {
   state = {
     email: null,
-
     AllUserCVs: []
   };
 
@@ -59,8 +58,8 @@ class App extends Component {
         />
         <Route
           path="/dashboard"
-          render={props => <Dashboard {...props} showCV={this.showCV} />}
-          // render={props => <NewCVForm {...props}   />}
+          render={props => <Dashboard {...props} />}
+          // render={props => <NewCVForm {...props}  showCV={this.showCV} />}
         />
       </div>
     );

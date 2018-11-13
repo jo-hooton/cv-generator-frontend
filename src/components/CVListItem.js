@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Skills = () => {
+const CVListItem = (props) => {
     return (
         <div>
-            <h3>Skills</h3>
+            List Item
             
         </div>
     )
 }
 
-export default Skills
+export default CVListItem

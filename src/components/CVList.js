@@ -1,9 +1,15 @@
 import React from 'react';
+import CVListItem from './CVListItem'
 
-const List = () => {
+const CVList = (props) => {
     return (
-        <div>List </div>
+        <div>
+            List
+            < CVListItem 
+            // list={this.props.list} 
+            />
+        </div>
     )
 }
 
-export default List
+export default CVList

@@ -1,8 +1,10 @@
 import React from "react";
-import ExperienceListItem from "./ExperienceListItem";
-import EducationListItem from "./EducationListItem";
-import SkillListItem from "./SkillListItem";
+import ExperienceFormItem from "./ExperienceFormItem";
+import EducationFormItem from "./EducationFormItem";
+import SkillFormItem from "./SkillFormItem";
 import API from "../API";
+
+import CVContainer from "./CVContainer";
 
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -16,7 +18,8 @@ class NewCVForm extends React.Component {
     bio: "",
     experience: [],
     education: [],
-    skill: []
+    skills: [],
+    contactDetails: {}
   };
 
   addExperience = () => {
@@ -54,7 +57,7 @@ class NewCVForm extends React.Component {
   };
   handleSkillClick = item => {
     this.setState({
-      skill: [...this.state.skill, item]
+      skills: [...this.state.skills, item]
     });
   };
 
@@ -63,7 +66,7 @@ class NewCVForm extends React.Component {
     let expArr = [];
     for (counter; counter < this.state.numExperiences; counter++) {
       expArr.push(
-        <ExperienceListItem handleClick={this.handleExperienceClick} />
+        <ExperienceFormItem handleClick={this.handleExperienceClick} />
       );
     }
     return expArr;
@@ -73,9 +76,10 @@ class NewCVForm extends React.Component {
     let eduArr = [];
     for (counter; counter < this.state.numEducations; counter++) {
       eduArr.push(
-        <EducationListItem handleClick={this.handleEducationClick} />
+        <EducationFormItem handleClick={this.handleEducationClick} />
       );
     }
+
     return eduArr;
   };
 
@@ -83,7 +87,7 @@ class NewCVForm extends React.Component {
     let counter = 0;
     let skillArr = [];
     for (counter; counter < this.state.numSkills; counter++) {
-      skillArr.push(<SkillListItem handleClick={this.handleSkillClick} />);
+      skillArr.push(<SkillFormItem handleClick={this.handleSkillClick} />);
     }
     return skillArr;
   };
@@ -148,6 +152,7 @@ class NewCVForm extends React.Component {
           Add More Education
         </Button>
         <h3>Skills</h3>
+
         {this.showSkillsForms()}
         <Button onClick={this.addSkill} variant="contained" color="primary">
           Add a Skill
@@ -162,6 +167,8 @@ class NewCVForm extends React.Component {
         >
           Save CV
         </Button>
+
+
       </div>
     );
   }

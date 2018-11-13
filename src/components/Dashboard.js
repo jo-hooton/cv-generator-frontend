@@ -1,13 +1,13 @@
 import React from "react";
 import NewCVForm from "./NewCVForm";
-import CVContainer from "./CVContainer";
 
 class Dashboard extends React.Component {
   render() {
     return (
       <div>
+        {/* If CV has beed created render CV container else render NewCV form */}
+        {/* <CVContainer /> */}
         <NewCVForm />
-        <CVContainer />
       </div>
     );
   }
