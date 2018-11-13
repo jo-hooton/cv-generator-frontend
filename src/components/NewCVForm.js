@@ -90,9 +90,13 @@ class NewCVForm extends React.Component {
 
   saveCV = () => {
     const { title, bio, experience, education, skills } = this.state;
-    API.newCV(title, bio, experience, education, skills).then(data =>
-      console.log(data)
-    );
+    API.newCV(title, bio, experience, education, skills).then(data => {
+      if (data.error) {
+        alert("Din't work!");
+      } else {
+        console.log(data);
+      }
+    });
   };
 
   render() {
@@ -153,15 +157,6 @@ class NewCVForm extends React.Component {
         <br />
         <Button
           onClick={() => this.saveCV()}
-          //   this.props.newCV({
-          //     user_id: "",
-          //     title: this.state.title,
-          //     bio: this.state.bio,
-          //     experience: this.state.experience,
-          //     education: this.state.education,
-          //     skill: this.state.skill
-          //   })
-          // }
           variant="contained"
           color="primary"
         >
