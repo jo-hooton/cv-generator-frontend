@@ -35,6 +35,19 @@ class API {
     }).then(resp => resp.json());
   }
 
+  static updatePhoto(url) {
+    const token = localStorage.getItem("token");
+    console.log("updatephot is called");
+    
+    return fetch("http://localhost:3001/update_photo", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json", Authorization: token },
+      body: JSON.stringify({
+        photo: url
+      })
+    }).then(resp => resp.json());
+  }
+
   static newCV(title, bio, experience, education, skills, contactDetails, photo) {
     const token = localStorage.getItem("token");
     return fetch("http://localhost:3001/cvs", {

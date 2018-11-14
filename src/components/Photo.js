@@ -24,7 +24,12 @@ class Photo extends React.Component {
                 />
                 <br />
             <Button
-                onClick={() => this.props.savePhoto(this.state.photoUrl)}
+                onClick={() =>{ 
+                    this.props.savePhoto(this.state.photoUrl)
+                    this.props.handleClick()
+                }
+                   
+                }
                 variant="contained"
                 color="primary"
                 >
@@ -51,7 +56,10 @@ class Photo extends React.Component {
             <>
             <div>
             <img className='profile-img' src={this.props.photo} alt='profile-photo'></img><br />
-            <Button onClick={() => this.props.handleClick()}>Edit Photo</Button>
+            { this.props.photoForm ? this.renderPhotoForm() 
+                : 
+                <Button onClick={() => this.props.handleClick()}>Edit Photo</Button>
+                }
             </div>
             </>
             }

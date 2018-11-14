@@ -20,7 +20,7 @@ class App extends Component {
 
   signin = user => {
     localStorage.setItem("token", user.token);
-    this.setState({ email: user.email });
+    this.setState({ email: user.email, photo: user.photo });
     this.props.history.push("/dashboard");
   };
 
@@ -36,9 +36,10 @@ class App extends Component {
   }
 
   setPhoto = (url) => {
-    console.log(url);
-    
     this.setState({photo: url})
+    console.log("setPhoto called");
+    
+    API.updatePhoto(url)
   }
 
   // showCV = () => {
