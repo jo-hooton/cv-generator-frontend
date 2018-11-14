@@ -4,8 +4,6 @@ import EducationFormItem from "./EducationFormItem";
 import SkillFormItem from "./SkillFormItem";
 import API from "../API";
 
-import CVContainer from "./CVContainer";
-
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
@@ -93,12 +91,12 @@ class NewCVForm extends React.Component {
   };
 
   saveCV = () => {
-    const { title, bio, experience, education, skills } = this.state;
-    API.newCV(title, bio, experience, education, skills).then(data => {
+    const { title, bio, photo, experience, education, skills } = this.state;
+    API.newCV(title, bio, photo, experience, education, skills).then(data => {
       if (data.error) {
         alert("Din't work!");
       } else {
-        console.log(data);
+        this.props.showCV(data);
       }
     });
   };
@@ -167,8 +165,6 @@ class NewCVForm extends React.Component {
         >
           Save CV
         </Button>
-
-
       </div>
     );
   }
