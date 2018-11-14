@@ -12,7 +12,8 @@ import "./App.css";
 class App extends Component {
   state = {
     email: null,
-    AllUserCVs: []
+    allUserCVs: [],
+    selectedCV: null
   };
 
   signin = user => {
@@ -38,6 +39,8 @@ class App extends Component {
         this.signin(user);
         this.props.history.push("/dashboard");
       })
+      .then(() => API.getUserCvs())
+      .then(resp => this.setState({allUserCVs: resp}))
       .catch(error => this.props.history.push("/signin"));
   }
 

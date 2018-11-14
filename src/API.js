@@ -51,6 +51,13 @@ class API {
     }).then(resp => resp.json());
   }
 
+  static getUserCvs() {
+    const token = localStorage.getItem("token");
+    return fetch('http://localhost:3001/get_cvs', {
+      headers: { Authorization: token }
+    }).then(resp => resp.json())
+  }
+
   static newTextItem(title, content, cv_id) {
     return (
       fetch("http://localhost:3001/text_items"),
