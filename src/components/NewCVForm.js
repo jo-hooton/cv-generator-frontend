@@ -5,10 +5,12 @@ import SkillFormItem from "./SkillFormItem";
 import ContactFormItem from "./ContactFormItem"
 import API from "../API";
 
+
+
 import CVContainer from "./CVContainer";
 
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { Button } from 'semantic-ui-react'
 
 class NewCVForm extends React.Component {
   state = {

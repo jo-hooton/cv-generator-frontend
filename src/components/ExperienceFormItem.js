@@ -1,17 +1,27 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { Button } from 'semantic-ui-react'
+
 
 class ExperienceFormItem extends React.Component {
   state = {
     position: "",
     company: "",
-    dates: ""
+    dates: "",
+    button: "active"
   };
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
+  buttonClick = () => {
+    this.props.handleClick({
+      position: this.state.position,
+      company: this.state.company,
+      dates: this.state.dates})
+    this.setState({button: "disabled"})
+  }
 
   render() {
     return (
@@ -46,17 +56,18 @@ class ExperienceFormItem extends React.Component {
           type="experienceDates"
         />
         <br />
-        <Button
-          onClick={() =>
-            this.props.handleClick({
-              position: this.state.position,
-              company: this.state.company,
-              dates: this.state.dates
-            })
+        {this.state.button === 'active' ?
+        <Button 
+        basic color='blue'
+          onClick={
+              () => this.buttonClick()
           }
         >
           Save
         </Button>
+        :
+        <Button disabled>Saved</Button>
+        }
       </div>
     );
   }

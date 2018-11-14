@@ -9,12 +9,18 @@ const Header = props =>
           `CV Generator` :
           'CV Generator'
       }
+      </h1>
       <br />
+      <div className="header-photo" style={ { backgroundImage: `url(${props.photo})` } }>
+      </div>
+      <div>
       {
         props.email &&
           <Button inverted color="blue" onClick={props.signout}>SIGN OUT</Button>
       }
-    </h1>
+      </div>
+    
+   
   </header>
 
 export default Header

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { Button } from 'semantic-ui-react'
 
 
 class Photo extends React.Component {
@@ -48,7 +48,10 @@ class Photo extends React.Component {
                 <img className='profile-img' src='https://i.kym-cdn.com/photos/images/original/001/297/705/588.png' alt='profile-photo'></img><br />
                 { this.props.photoForm ? this.renderPhotoForm() 
                 : 
-                <Button onClick={() => this.props.handleClick()}>Add Photo</Button>
+                <Button
+                variant="contained"
+                color="primary"
+                onClick={() => this.props.handleClick()}>Add Photo</Button>
                 }
             </div>
             </>
@@ -58,7 +61,10 @@ class Photo extends React.Component {
             <img className='profile-img' src={this.props.photo} alt='profile-photo'></img><br />
             { this.props.photoForm ? this.renderPhotoForm() 
                 : 
-                <Button onClick={() => this.props.handleClick()}>Edit Photo</Button>
+                <Button 
+                variant="contained"
+                color="primary"
+                onClick={() => this.props.handleClick()}>Edit Photo</Button>
                 }
             </div>
             </>

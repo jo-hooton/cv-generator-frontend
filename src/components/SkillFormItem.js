@@ -1,15 +1,25 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { Button } from 'semantic-ui-react'
+
 
 class SkillListItem extends React.Component {
   state = {
     skill: "",
-    skillfulness: ""
+    skillfulness: "",
+    button: "active"
   };
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
+  buttonClick = () => {
+    this.props.handleClick({
+      skill: this.state.skill,
+      skillfulness: this.state.skillfulness})
+    this.setState({button: "disabled"})
+  }
+
   render() {
     return (
       <div>
@@ -33,16 +43,18 @@ class SkillListItem extends React.Component {
           type="skillfulness"
         />
         <br />
-        <Button
-          onClick={() =>
-            this.props.handleClick({
-              skill: this.state.skill,
-              skillfulness: this.state.skillfulness
-            })
+        {this.state.button === 'active' ?
+        <Button 
+        basic color='blue'
+          onClick={
+              () => this.buttonClick()
           }
         >
           Save
         </Button>
+        :
+        <Button disabled>Saved</Button>
+        }
       </div>
     );
   }

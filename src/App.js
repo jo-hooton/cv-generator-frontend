@@ -3,7 +3,6 @@ import { Route, withRouter } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css';
 
 import API from "./API";
-import Nav from "./components/Nav.js";
 import Header from "./components/Header";
 import AuthForm from "./components/AuthForm";
 import Dashboard from "./components/Dashboard";
@@ -64,7 +63,11 @@ class App extends Component {
     const { signin, signout, selectCV, setPhoto } = this;
     return (
       <div className="App">
-        <Header email={email} signout={signout} />
+        <Header 
+        email={email} 
+        signout={signout} 
+        photo={photo} 
+        />
         <Route
           path="/signin"
           render={props => <AuthForm {...props} authenticate={signin} />}

@@ -6,7 +6,7 @@ const CVHeader = (props) => {
             <h1>
             {props.title}
             </h1>
-            <div className="profile-photo" style={ { backgroundImage: `url(${props.photo})` } }></div>
+            <div className="profile-photo-cv" style={ { backgroundImage: `url(${props.photo})` } }></div>
         </div>
     )
 }

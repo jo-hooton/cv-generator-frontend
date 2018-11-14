@@ -1,16 +1,24 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { Button } from 'semantic-ui-react'
 
 class ContactFormItem extends React.Component {
   state = {
     phoneNumber: "",
-    address: ""
+    address: "",
+    button: "active"
   };
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
+  buttonClick = () => {
+    this.props.handleClick({
+      phoneNumber: this.state.phoneNumber,
+      address: this.state.address})
+    this.setState({button: "disabled"})
+  }
 
   render() {
     return (
@@ -35,16 +43,18 @@ class ContactFormItem extends React.Component {
           type="address"
         />
         <br />
-        <Button
-          onClick={() =>
-            this.props.handleClick({
-              phoneNumber: this.state.phoneNumber,
-              address: this.state.address
-            })
+        {this.state.button === 'active' ?
+        <Button 
+        basic color='blue'
+          onClick={
+              () => this.buttonClick()
           }
         >
           Save
         </Button>
+        :
+        <Button disabled>Saved</Button>
+        }
       </div>
     );
   }

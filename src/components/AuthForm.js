@@ -3,7 +3,7 @@ import React from "react";
 import API from "../API";
 
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { Button } from 'semantic-ui-react'
 
 class AuthForm extends React.Component {
   state = {
