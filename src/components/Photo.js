@@ -6,33 +6,54 @@ import Button from "@material-ui/core/Button";
 
 class Photo extends React.Component {
 
-    render() {
-        return(
+    state = {
+        photoUrl: ''
+    }
+
+    renderPhotoForm = () => {
+        return (
         <div>
-            {this.props.photo === null ? 
-            <>
-            <div>
-                <img className='profile-img' src='https://i.kym-cdn.com/photos/images/original/001/297/705/588.png'></img>
-            </div>
-                <TextField
+            <TextField
                 id="photoInput"
                 label="Photo URL"
                 value={this.props.photo} 
+                onChange={(event) => this.setState({photoUrl: event.target.value})}
                 margin="normal"
                 name="photo"
                 type="photo"
                 />
                 <br />
-                <Button
-                    onClick={(event) => this.props.savePhoto(event.target.value)}
-                    variant="contained"
-                    color="primary"
-                    >
-                    Save Photo
-                </Button>
+            <Button
+                onClick={() => this.props.savePhoto(this.state.photoUrl)}
+                variant="contained"
+                color="primary"
+                >
+                Save Photo
+            </Button>
+        </div>
+        )
+    }
+
+    render() {
+        return(
+        <div>
+            {!this.props.photo ? 
+            <>
+            <div>
+                <img className='profile-img' src='https://i.kym-cdn.com/photos/images/original/001/297/705/588.png' alt='profile-photo'></img><br />
+                { this.props.photoForm ? this.renderPhotoForm() 
+                : 
+                <Button onClick={() => this.props.handleClick()}>Add Photo</Button>
+                }
+            </div>
             </>
             :
-            <img src={this.props.photo} alt='profile-photo'></img>
+            <>
+            <div>
+            <img className='profile-img' src={this.props.photo} alt='profile-photo'></img><br />
+            <Button onClick={() => this.props.handleClick()}>Edit Photo</Button>
+            </div>
+            </>
             }
         
         </div>

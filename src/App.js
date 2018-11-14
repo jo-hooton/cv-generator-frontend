@@ -36,6 +36,8 @@ class App extends Component {
   }
 
   setPhoto = (url) => {
+    console.log(url);
+    
     this.setState({photo: url})
   }
 

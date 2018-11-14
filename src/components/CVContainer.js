@@ -4,7 +4,6 @@ import CVSkills from './CVSkills'
 import CVContactDetails from './CVContactDetails'
 import CVTextItem from './CVTextItem'
 import CVList from './CVList'
-import Photo from './Photo'
 
 const CVContainer = (props) => {
     
@@ -13,7 +12,6 @@ const CVContainer = (props) => {
             <CVHeader 
             title={props.cv.title} 
             />
-            <Photo photo={props.photo} savePhoto={props.savePhoto} /> 
             <CVSkills 
             // skills={this.props.cv.skills}
              />

@@ -93,8 +93,8 @@ class NewCVForm extends React.Component {
   };
 
   saveCV = () => {
-    const { title, bio, experience, education, skills } = this.state;
-    API.newCV(title, bio, experience, education, skills).then(data => {
+    const { title, bio, experience, education, skills, photo } = this.state;
+    API.newCV(title, bio, experience, education, skills, photo).then(data => {
       if (data.error) {
         alert("Din't work!");
       } else {
@@ -124,16 +124,6 @@ class NewCVForm extends React.Component {
           margin="normal"
           name="bio"
           type="bio"
-        />
-        <br />
-        <TextField
-          id="photoInput"
-          label="Photo URL"
-          value={this.state.photo}
-          onChange={this.handleChange}
-          margin="normal"
-          name="photo"
-          type="photo"
         />
         <br />
         <h3>Experience</h3>
