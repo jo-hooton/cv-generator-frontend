@@ -2,6 +2,7 @@ import React from "react";
 import ExperienceFormItem from "./ExperienceFormItem";
 import EducationFormItem from "./EducationFormItem";
 import SkillFormItem from "./SkillFormItem";
+import ContactFormItem from "./ContactFormItem"
 import API from "../API";
 
 import CVContainer from "./CVContainer";
@@ -14,12 +15,13 @@ class NewCVForm extends React.Component {
     numExperiences: 1,
     numEducations: 1,
     numSkills: 1,
+    numContacts: 1,
     title: "",
     bio: "",
     experience: [],
     education: [],
     skills: [],
-    contactDetails: {}
+    contact: []
   };
 
   addExperience = () => {
@@ -61,6 +63,12 @@ class NewCVForm extends React.Component {
     });
   };
 
+  handleContactClick = item => {
+    this.setState({
+      contact: [...this.state.contact, item]
+    });
+  };
+
   showExperienceForms = () => {
     let counter = 0;
     let expArr = [];
@@ -92,9 +100,18 @@ class NewCVForm extends React.Component {
     return skillArr;
   };
 
+  showContactForms = () => {
+    let counter = 0;
+    let contactArr = [];
+    for (counter; counter < this.state.numSkills; counter++) {
+      contactArr.push(<ContactFormItem handleClick={this.handleContactClick} />);
+    }
+    return contactArr;
+  };
+
   saveCV = () => {
-    const { title, bio, experience, education, skills, photo } = this.state;
-    API.newCV(title, bio, experience, education, skills, photo).then(data => {
+    const { title, bio, experience, education, skills, contact, photo} = this.state;
+    API.newCV(title, bio, experience, education, skills, contact, photo).then(data => {
       if (data.error) {
         alert("Din't work!");
       } else {
@@ -125,6 +142,9 @@ class NewCVForm extends React.Component {
           name="bio"
           type="bio"
         />
+        <br />
+        <h3>Contact</h3>
+        {this.showContactForms()}
         <br />
         <h3>Experience</h3>
         {this.showExperienceForms()}

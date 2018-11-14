@@ -8,25 +8,21 @@ import CVList from './CVList'
 const CVContainer = (props) => {
     
     return (
-        <div>CV Container
+        <div>
             <CVHeader 
             title={props.cv.title} 
+            photo={props.photo}
             />
             <CVSkills 
-            // skills={this.props.cv.skills}
+            skills={props.cv.skills}
              />
             <CVContactDetails
-            //  contactDetails={this.props.cv.contactDetails} 
-             />
-            <CVTextItem 
-            // heading='Bio' content={this.props.bio} 
-            />
-            <CVList 
-            // list={this.props.experience} 
-            />
-            <CVList 
-            // list={this.props.education} 
-            />
+             contactDetails={props.cv.contact_details} />
+             
+            {props.cv.text_items.map(textItem => 
+            <CVTextItem heading={textItem.title} content={textItem.content} />)}
+            {props.cv.lists.map(list => <CVList cvList={list} />)}
+
         </div>
     )
 

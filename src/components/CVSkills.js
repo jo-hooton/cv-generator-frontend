@@ -1,12 +1,21 @@
 import React from 'react';
+import PieChart from 'react-minimal-pie-chart';
+ 
 
-const Skills = () => {
-    return (
+
+const Skills = (props) => {
+    return ( 
         <div>
-            <h3>Skills</h3>
-            
+            {/* <>
+            {props.skills.map(skill => 
+            <PieChart skillName={skill.name} skillPercentage={skill.percentage}
+            data={[
+              { title: {skillName}, value: {skillPercentage}, color: '#E38627' },
+            ]} 
+            />) 
+            }
+            </> */}
         </div>
     )
 }
-
 export default Skills

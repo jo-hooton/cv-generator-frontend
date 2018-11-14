@@ -1,19 +1,18 @@
 import React from 'react'
-
+import { Button } from 'semantic-ui-react'
 
 const Header = props =>
   <header className='App-header'>
-    <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     <h1 className='App-title'>
       {
         props.email ?
-          `Welcome back, ${props.email}!` :
+          `CV Generator` :
           'CV Generator'
       }
       <br />
       {
         props.email &&
-          <button onClick={props.signout}>SIGN OUT</button>
+          <Button inverted color="blue" onClick={props.signout}>SIGN OUT</Button>
       }
     </h1>
   </header>

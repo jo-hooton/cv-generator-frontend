@@ -48,7 +48,7 @@ class API {
     }).then(resp => resp.json());
   }
 
-  static newCV(title, bio, experience, education, skills, contactDetails, photo) {
+  static newCV(title, bio, experience, education, skills, contact, photo) {
     const token = localStorage.getItem("token");
     return fetch("http://localhost:3001/cvs", {
       method: "POST",
@@ -59,7 +59,7 @@ class API {
         experience,
         education,
         skills,
-        contactDetails,
+        contact,
         photo
       })
     }).then(resp => resp.json());

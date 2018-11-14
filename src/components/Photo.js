@@ -16,7 +16,7 @@ class Photo extends React.Component {
             <TextField
                 id="photoInput"
                 label="Photo URL"
-                value={this.props.photo} 
+                value={this.state.photoUrl} 
                 onChange={(event) => this.setState({photoUrl: event.target.value})}
                 margin="normal"
                 name="photo"

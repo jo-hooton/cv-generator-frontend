@@ -1,8 +1,12 @@
 import React from 'react';
 
-const CVContactDetails = () => {
+const CVContactDetails = (props) => {
     return (
-        <div>CV ContactDetails</div>
+        <div>
+            <h3>Contact</h3>
+             <p>{props.contactDetails.map(contact => contact.phone_number)}</p>
+             <p>{props.contactDetails.map(contact => contact.address)}</p>
+        </div>
     )
 }
 

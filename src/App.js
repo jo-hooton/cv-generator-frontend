@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
+import 'semantic-ui-css/semantic.min.css';
 
 import API from "./API";
 import Nav from "./components/Nav.js";
@@ -63,7 +64,6 @@ class App extends Component {
     const { signin, signout, selectCV, setPhoto } = this;
     return (
       <div className="App">
-        <Nav email={this.state.email} />
         <Header email={email} signout={signout} />
         <Route
           path="/signin"
