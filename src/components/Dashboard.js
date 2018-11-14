@@ -1,5 +1,6 @@
-import React from "react";
-import NewCVForm from "./NewCVForm";
+import React from "react"
+import NewCVForm from "./NewCVForm"
+import CVContainer from "./CVContainer"
 
 class Dashboard extends React.Component {
 
@@ -12,17 +13,16 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-        
+        <>
         { this.props.allUserCVs === [] ?
           null:
           <select onChange={(event) => this.props.selectCV(event.target.value)}>
             {options}
           </select>
         }
-
-        {/* If CV has beed created render CV container else render NewCV form */}
-        {/* <CVContainer /> */}
-        <NewCVForm />
+        {this.props.selectedCV ? <CVContainer cv={this.props.selectedCV} photo={this.props.photo} savePhoto={this.props.savePhoto} /> : <NewCVForm />}
+        
+        </>
       </div>
     );
   }

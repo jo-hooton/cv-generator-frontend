@@ -4,7 +4,7 @@ const CVHeader = (props) => {
     return (
         <div>
             <h1>
-            {/* {this.props.title} */}
+            {props.title}
             </h1>
             Photo
         </div>

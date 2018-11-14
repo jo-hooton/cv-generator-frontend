@@ -13,6 +13,7 @@ import "./App.css";
 class App extends Component {
   state = {
     email: null,
+    photo: null,
     allUserCVs: [],
     selectedCV: null
   };
@@ -34,6 +35,10 @@ class App extends Component {
     this.setState({selectedCV: foundCV})
   }
 
+  setPhoto = (url) => {
+    this.setState({photo: url})
+  }
+
   // showCV = () => {
   //   this.props.history.push("/dashboard");
   // };
@@ -51,8 +56,8 @@ class App extends Component {
   }
 
   render() {
-    const { email, allUserCVs, selectedCV } = this.state;
-    const { signin, signout, selectCV } = this;
+    const { email, allUserCVs, selectedCV, photo } = this.state;
+    const { signin, signout, selectCV, setPhoto } = this;
     return (
       <div className="App">
         <Nav email={this.state.email} />
@@ -67,7 +72,12 @@ class App extends Component {
         />
         <Route
           path="/dashboard"
-          render={props => <Dashboard {...props} allUserCVs={allUserCVs} selectCV={selectCV} />}
+          render={props => <Dashboard {...props} 
+          allUserCVs={allUserCVs} 
+          selectCV={selectCV} 
+          selectedCV={selectedCV} 
+          photo={photo} 
+          savePhoto={setPhoto}/>}
           // render={props => <NewCVForm {...props}  showCV={this.showCV} />}
         />
         <Route 
