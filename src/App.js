@@ -5,15 +5,13 @@ import API from "./API";
 import Nav from "./components/Nav.js";
 import Header from "./components/Header";
 import AuthForm from "./components/AuthForm";
-// import Dashboard from "./components/Dashboard";
-import NewCVForm from "./components/NewCVForm";
-
+import Dashboard from "./components/Dashboard";
+// import NewCVForm from "./components/NewCVForm";
 import "./App.css";
 
 class App extends Component {
   state = {
     email: null,
-    newCV: {},
     AllUserCVs: []
   };
 
@@ -29,11 +27,9 @@ class App extends Component {
     this.props.history.push("/signin");
   };
 
-  saveCV = cv => {
-    this.setState({
-      newCV: cv
-    });
-  };
+  // showCV = () => {
+  //   this.props.history.push("/dashboard");
+  // };
 
   componentDidMount() {
     if (!localStorage.getItem("token")) return;
@@ -62,10 +58,8 @@ class App extends Component {
         />
         <Route
           path="/dashboard"
-          // render={props => <Dashboard {...props} email={email} />}
-          render={props => (
-            <NewCVForm {...props} email={email} newCV={this.saveCV} />
-          )}
+          render={props => <Dashboard {...props} />}
+          // render={props => <NewCVForm {...props}  showCV={this.showCV} />}
         />
       </div>
     );

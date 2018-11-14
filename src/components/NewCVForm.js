@@ -4,24 +4,23 @@ import EducationFormItem from "./EducationFormItem";
 import SkillFormItem from "./SkillFormItem";
 import API from "../API";
 
-import CVContainer from './CVContainer'
+import CVContainer from "./CVContainer";
 
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 class NewCVForm extends React.Component {
-    
-    state = {
-        numExperiences: 1,
-        numEducations: 1,
-        numSkills: 1,
-        title: '',
-        bio: '',
-        experience: [],
-        education: [],
-        skills: [],
-        contactDetails: {}
-    }
+  state = {
+    numExperiences: 1,
+    numEducations: 1,
+    numSkills: 1,
+    title: "",
+    bio: "",
+    experience: [],
+    education: [],
+    skills: [],
+    contactDetails: {}
+  };
 
   addExperience = () => {
     this.setState({
@@ -45,13 +44,11 @@ class NewCVForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-
   handleExperienceClick = item => {
     this.setState({
       experience: [...this.state.experience, item]
     });
   };
-
 
   handleEducationClick = item => {
     this.setState({
@@ -60,7 +57,7 @@ class NewCVForm extends React.Component {
   };
   handleSkillClick = item => {
     this.setState({
-      skills: [...this.state.skill, item]
+      skills: [...this.state.skills, item]
     });
   };
 
@@ -71,7 +68,6 @@ class NewCVForm extends React.Component {
       expArr.push(
         <ExperienceFormItem handleClick={this.handleExperienceClick} />
       );
-
     }
     return expArr;
   };
@@ -98,12 +94,14 @@ class NewCVForm extends React.Component {
 
   saveCV = () => {
     const { title, bio, experience, education, skills } = this.state;
-    API.newCV(title, bio, experience, education, skills).then(data =>
-      console.log(data)
-    );
+    API.newCV(title, bio, experience, education, skills).then(data => {
+      if (data.error) {
+        alert("Din't work!");
+      } else {
+        console.log(data);
+      }
+    });
   };
-
-   
 
   render() {
     return (
@@ -158,36 +156,19 @@ class NewCVForm extends React.Component {
         {this.showSkillsForms()}
         <Button onClick={this.addSkill} variant="contained" color="primary">
           Add a Skill
-
         </Button>
         <br />
 
         <br />
         <Button
-          onClick={this.saveCV}
-          //   this.props.newCV({
-          //     user_id: "",
-          //     title: this.state.title,
-          //     bio: this.state.bio,
-          //     experience: this.state.experience,
-          //     education: this.state.education,
-          //     skill: this.state.skill
-          //   })
-          // }
+          onClick={() => this.saveCV()}
           variant="contained"
           color="primary"
         >
           Save CV
         </Button>
 
-        < CVContainer 
-        // title={this.state.title}
-        // bio={this.state.bio}
-        // experience={this.state.experience}
-        // education={this.state.education}
-        // skills={this.state.skills}
-        // contactDetails={this.state.contactDetails}
-         /> 
+
       </div>
     );
   }
