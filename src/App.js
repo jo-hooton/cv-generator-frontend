@@ -6,6 +6,7 @@ import Nav from "./components/Nav.js";
 import Header from "./components/Header";
 import AuthForm from "./components/AuthForm";
 import Dashboard from "./components/Dashboard";
+import CVContainer from "./components/CVContainer"
 // import NewCVForm from "./components/NewCVForm";
 import "./App.css";
 
@@ -28,6 +29,10 @@ class App extends Component {
     this.props.history.push("/signin");
   };
 
+  selectCV = (cv) => {
+    this.setState({selectedCV: cv})
+  }
+
   // showCV = () => {
   //   this.props.history.push("/dashboard");
   // };
@@ -45,8 +50,8 @@ class App extends Component {
   }
 
   render() {
-    const { email } = this.state;
-    const { signin, signout } = this;
+    const { email, allUserCVs, selectedCV } = this.state;
+    const { signin, signout, selectCV } = this;
     return (
       <div className="App">
         <Nav email={this.state.email} />
@@ -61,8 +66,12 @@ class App extends Component {
         />
         <Route
           path="/dashboard"
-          render={props => <Dashboard {...props} />}
+          render={props => <Dashboard {...props} allUserCVs={allUserCVs} selectCV={selectCV} />}
           // render={props => <NewCVForm {...props}  showCV={this.showCV} />}
+        />
+        <Route 
+        path="/cv"
+        render={props => <CVContainer {...props} selectedCV={selectedCV} />}
         />
       </div>
     );
