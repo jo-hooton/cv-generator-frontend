@@ -29,8 +29,9 @@ class App extends Component {
     this.props.history.push("/signin");
   };
 
-  selectCV = (cv) => {
-    this.setState({selectedCV: cv})
+  selectCV = (id) => {
+    let foundCV = this.state.allUserCVs.find(cv => cv.id == id)
+    this.setState({selectedCV: foundCV})
   }
 
   // showCV = () => {

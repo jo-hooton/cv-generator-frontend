@@ -2,6 +2,8 @@ import React from "react";
 import NewCVForm from "./NewCVForm";
 
 class Dashboard extends React.Component {
+
+
   render() {
     let options = this.props.allUserCVs.map(cv => {
       return <option value={`${cv.id}`}>{cv.title}</option>
@@ -10,9 +12,10 @@ class Dashboard extends React.Component {
 
     return (
       <div>
+        
         { this.props.allUserCVs === [] ?
           null:
-          <select>
+          <select onChange={(event) => this.props.selectCV(event.target.value)}>
             {options}
           </select>
         }
