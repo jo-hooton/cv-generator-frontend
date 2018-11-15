@@ -29,7 +29,7 @@ class Dashboard extends React.Component {
           </select>
         }
         <Photo photo={this.props.photo} savePhoto={this.props.savePhoto} photoForm={this.state.photoForm} handleClick={this.handleClick} />
-        {this.props.selectedCV ? <CVContainer cv={this.props.selectedCV} photo={this.props.photo} savePhoto={this.props.savePhoto} /> : <NewCVForm />}
+        {this.props.selectedCV ? <CVContainer cv={this.props.selectedCV} photo={this.props.photo} savePhoto={this.props.savePhoto} email={this.props.email} /> : <NewCVForm />}
         
         </>
       </div>

@@ -1,9 +1,10 @@
 import React from 'react';
 import CVListItem from './CVListItem'
+import { List } from 'semantic-ui-react'
 
 const CVList = (props) => {
     return (
-        <div>
+        <List divided relaxed>
             <h3>{props.cvList.title}</h3>
             {props.cvList.list_items.map(list_item => 
             <CVListItem 
@@ -11,7 +12,7 @@ const CVList = (props) => {
             sub_heading={list_item.sub_heading} 
             content={list_item.content} 
             />)}
-        </div>
+       </List>
     )
 }
 

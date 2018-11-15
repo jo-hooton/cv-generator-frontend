@@ -22,7 +22,8 @@ const CVContainer = (props) => {
             </div>
             <div className="cv-contact">
             <CVContactDetails
-             contactDetails={props.cv.contact_details} />
+             contactDetails={props.cv.contact_details}
+             email={props.email}  />
             </div>
             <div className="cv-text">
             {props.cv.text_items.map(textItem => 

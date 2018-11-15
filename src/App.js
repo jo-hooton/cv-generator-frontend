@@ -79,6 +79,7 @@ class App extends Component {
         <Route
           path="/dashboard"
           render={props => <Dashboard {...props} 
+          email={email} 
           allUserCVs={allUserCVs} 
           selectCV={selectCV} 
           selectedCV={selectedCV} 
