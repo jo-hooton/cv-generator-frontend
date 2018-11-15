@@ -48,7 +48,7 @@ class EducationFormItem extends React.Component {
         <br />
         <TextField
           id="datesInput"
-          label="Dates"
+          label="Year"
           value={this.state.dates}
           onChange={this.handleChange}
           margin="normal"
@@ -56,6 +56,7 @@ class EducationFormItem extends React.Component {
           type="dates"
         />
         <br />
+        <div style={{ margin: '1.5em' }}>
         {this.state.button === 'active' ?
         <Button 
         basic color='blue'
@@ -68,6 +69,7 @@ class EducationFormItem extends React.Component {
         :
         <Button disabled>Saved</Button>
         }
+        </div>
       </div>
     );
   }

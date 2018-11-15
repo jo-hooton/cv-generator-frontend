@@ -43,6 +43,7 @@ class ContactFormItem extends React.Component {
           type="address"
         />
         <br />
+        <div style={{ margin: '1.5em' }}>
         {this.state.button === 'active' ?
         <Button 
         basic color='blue'
@@ -55,6 +56,7 @@ class ContactFormItem extends React.Component {
         :
         <Button disabled>Saved</Button>
         }
+        </div>
       </div>
     );
   }

@@ -35,6 +35,10 @@ class App extends Component {
     this.setState({selectedCV: foundCV})
   }
 
+  resetSelectCV = () => {
+    this.setState({selectedCV: null})
+  }
+
   setPhoto = (url) => {
     this.setState({photo: url})
     console.log("setPhoto called");
@@ -60,7 +64,7 @@ class App extends Component {
 
   render() {
     const { email, allUserCVs, selectedCV, photo } = this.state;
-    const { signin, signout, selectCV, setPhoto } = this;
+    const { signin, signout, selectCV, setPhoto, resetSelectCV } = this;
     return (
       <div className="App">
         <Header 
@@ -83,6 +87,7 @@ class App extends Component {
           allUserCVs={allUserCVs} 
           selectCV={selectCV} 
           selectedCV={selectedCV} 
+          resetSelectCV={resetSelectCV}
           photo={photo} 
           savePhoto={setPhoto}/>}
           // render={props => <NewCVForm {...props}  showCV={this.showCV} />}

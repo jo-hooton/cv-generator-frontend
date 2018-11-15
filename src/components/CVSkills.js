@@ -1,21 +1,20 @@
 import React from 'react';
-import PieChart from 'react-minimal-pie-chart';
- 
-
+import { Rating } from 'semantic-ui-react'
 
 const Skills = (props) => {
     return ( 
-        <div>
-            {/* <>
+            <>
+            <h3>Skills</h3>
+            
             {props.skills.map(skill => 
-            <PieChart skillName={skill.name} skillPercentage={skill.percentage}
-            data={[
-              { title: {skillName}, value: {skillPercentage}, color: '#E38627' },
-            ]} 
-            />) 
+            <div style={{ margin: '1.5em' }}>
+            <h4>{skill.name}</h4>
+            <Rating defaultRating={skill.percentage} maxRating={5} disabled />
+            </div>)
             }
-            </> */}
-        </div>
+            </>
+
+            
     )
 }
 export default Skills

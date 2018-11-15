@@ -1,7 +1,31 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300');
 
-* {
+/* * {
   font-family: 'Roboto Slab', serif;
+} */
+
+h3 {
+    text-align: left;
+    color: #33AFFF;
+}
+
+p {
+  text-align: left;
+}
+
+.cv-contact {
+  display: flex;
+  width: 200px;
+}
+
+.cv-text {
+  display: flex;
+  width: 400px;
+}
+
+.cv-list {
+  display: flex;
+  width: 400px;
 }
 
 .App {
@@ -42,10 +66,11 @@
 }
 
 .profile-photo-cv {
-  height: 300px;
-  width: 300px;
+  margin: auto;
+  padding: 10px;
+  height: 200px;
+  width: 200px;
   border-radius: 20%;
-  display: block;
   background-repeat: no-repeat;
   background-size: cover;
 }

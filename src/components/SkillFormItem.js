@@ -35,7 +35,7 @@ class SkillListItem extends React.Component {
         <br />
         <TextField
           id="skillfulnessInput"
-          label="Skillfulness out of 10"
+          label="Skillfulness out of 5"
           value={this.state.skillfulness}
           onChange={this.handleChange}
           margin="normal"
@@ -43,6 +43,7 @@ class SkillListItem extends React.Component {
           type="skillfulness"
         />
         <br />
+        <div style={{ margin: '1.5em' }}>
         {this.state.button === 'active' ?
         <Button 
         basic color='blue'
@@ -55,6 +56,7 @@ class SkillListItem extends React.Component {
         :
         <Button disabled>Saved</Button>
         }
+        </div>
       </div>
     );
   }

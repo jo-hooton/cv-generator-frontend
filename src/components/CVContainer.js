@@ -4,35 +4,50 @@ import CVSkills from './CVSkills'
 import CVContactDetails from './CVContactDetails'
 import CVTextItem from './CVTextItem'
 import CVList from './CVList'
+import { Grid, Image } from 'semantic-ui-react'
+
 
 const CVContainer = (props) => {
     
     return (
-        <div>
-            <div className="cv-header">
+         <Grid columns='three' divided>
+          <Grid.Row>
+           <Grid.Column>
             <CVHeader 
             title={props.cv.title} 
             photo={props.photo}
             />
-            </div>
-            <div className="cv-skills">
+            <div style={{ margin: '5em' }}>
+             <CVContactDetails
+             contactDetails={props.cv.contact_details}
+             email={props.email}  />
+             </div>
+            </Grid.Column>
+           
+            <Grid.Column>
+            <div style={{ margin: '2em' }}>
             <CVSkills 
             skills={props.cv.skills}
              />
             </div>
-            <div className="cv-contact">
-            <CVContactDetails
-             contactDetails={props.cv.contact_details}
-             email={props.email}  />
-            </div>
-            <div className="cv-text">
+            <div style={{ margin: '2em' }}>
             {props.cv.text_items.map(textItem => 
             <CVTextItem heading={textItem.title} content={textItem.content} />)}
             </div>
-            <div className="cv-list">
-            {props.cv.lists.map(list => <CVList cvList={list} />)}
-            </div>
-        </div>
+           
+            </Grid.Column>
+
+            <Grid.Column>
+            <div style={{ margin: '2em' }}>
+             {props.cv.lists.map(list => <CVList cvList={list} />)}
+             </div>
+            </Grid.Column>
+           
+          
+          
+            
+            </Grid.Row>
+        </Grid>
     )
 
 }

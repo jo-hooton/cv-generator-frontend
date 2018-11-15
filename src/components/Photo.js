@@ -35,6 +35,17 @@ class Photo extends React.Component {
                 >
                 Save Photo
             </Button>
+            <Button style={{ marginTop: '0.5em' }}
+                onClick={() =>{ 
+                    this.props.handleClick()
+                }
+                   
+                }
+                variant="contained"
+                color="primary"
+                >
+                Cancel
+            </Button>
         </div>
         )
     }
@@ -45,7 +56,7 @@ class Photo extends React.Component {
             {!this.props.photo ? 
             <>
             <div>
-                <img className='profile-img' src='https://i.kym-cdn.com/photos/images/original/001/297/705/588.png' alt='profile-photo'></img><br />
+                {/* <img className='profile-img' src='https://i.kym-cdn.com/photos/images/original/001/297/705/588.png' alt='profile-photo'></img><br /> */}
                 { this.props.photoForm ? this.renderPhotoForm() 
                 : 
                 <Button
@@ -58,7 +69,7 @@ class Photo extends React.Component {
             :
             <>
             <div>
-            <img className='profile-img' src={this.props.photo} alt='profile-photo'></img><br />
+            {/* <img className='profile-img' src={this.props.photo} alt='profile-photo'></img><br /> */}
             { this.props.photoForm ? this.renderPhotoForm() 
                 : 
                 <Button 

@@ -6,7 +6,7 @@ const CVListItem = (props) => {
     return (
         <List.Item>
             <List.Icon name='book' size='large' verticalAlign='middle' />
-            <List.Content>
+            <List.Content style={{ paddingRight: '3em' }}>
         <List.Header >{props.name}</List.Header>
         <List.Description >{props.sub_heading} | {props.content}</List.Description>
             </List.Content>

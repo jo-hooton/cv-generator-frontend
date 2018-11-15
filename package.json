@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.4.0",
+    "moment": "^2.22.2",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-minimal-pie-chart": "^3.3.0",
@@ -26,5 +27,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {}
 }

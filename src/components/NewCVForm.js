@@ -4,12 +4,15 @@ import EducationFormItem from "./EducationFormItem";
 import SkillFormItem from "./SkillFormItem";
 import ContactFormItem from "./ContactFormItem"
 import API from "../API";
+import { Grid, Image } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 
 
 
 import CVContainer from "./CVContainer";
 
 import TextField from "@material-ui/core/TextField";
+import TextArea from "@material-ui/core/TextField";
 import { Button } from 'semantic-ui-react'
 
 class NewCVForm extends React.Component {
@@ -124,8 +127,9 @@ class NewCVForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Create New CV</h2>
+      <>
+      <div style={{ margin: '2em' }}>
+        <h1>Create New CV</h1>
         <TextField
           id="cvTitleInput"
           label="Title"
@@ -135,7 +139,7 @@ class NewCVForm extends React.Component {
           name="title"
         />
         <br />
-        <TextField
+        <TextArea
           id="bioInput"
           label="Bio"
           value={this.state.bio}
@@ -144,11 +148,16 @@ class NewCVForm extends React.Component {
           name="bio"
           type="bio"
         />
-        <br />
-        <h3>Contact</h3>
+       </div>
+        <Grid columns='four' divided>
+          <Grid.Row>
+           <Grid.Column>
+        <h2>Contact</h2>
         {this.showContactForms()}
         <br />
-        <h3>Experience</h3>
+        </Grid.Column>
+        <Grid.Column>
+        <h2>Experience</h2>
         {this.showExperienceForms()}
         <Button
           onClick={this.addExperience}
@@ -158,20 +167,27 @@ class NewCVForm extends React.Component {
           Add More Experience
         </Button>
         <br />
-        <h3>Education</h3>
+        </Grid.Column>
+        <Grid.Column>
+        <h2>Education</h2>
         {this.showEducationForms()}
         <Button onClick={this.addEducation} variant="contained" color="primary">
           Add More Education
         </Button>
-        <h3>Skills</h3>
+        </Grid.Column>
+        <Grid.Column>
+        <h2>Skills</h2>
 
         {this.showSkillsForms()}
         <Button onClick={this.addSkill} variant="contained" color="primary">
           Add a Skill
         </Button>
         <br />
-
+        </Grid.Column>
+        </Grid.Row>
+        </Grid>
         <br />
+        <div style={{ margin: '2em' }}>
         <Button
           onClick={() => this.saveCV()}
           variant="contained"
@@ -179,9 +195,9 @@ class NewCVForm extends React.Component {
         >
           Save CV
         </Button>
-
-
-      </div>
+        </div>
+      </>
+  
     );
   }
 }

@@ -48,7 +48,7 @@ class ExperienceFormItem extends React.Component {
         <br />
         <TextField
           id="experienceDatesInput"
-          label="Dates"
+          label="Year"
           value={this.state.dates}
           onChange={this.handleChange}
           margin="normal"
@@ -56,6 +56,7 @@ class ExperienceFormItem extends React.Component {
           type="experienceDates"
         />
         <br />
+        <div style={{ margin: '1.5em' }}>
         {this.state.button === 'active' ?
         <Button 
         basic color='blue'
@@ -68,6 +69,7 @@ class ExperienceFormItem extends React.Component {
         :
         <Button disabled>Saved</Button>
         }
+        </div>
       </div>
     );
   }
