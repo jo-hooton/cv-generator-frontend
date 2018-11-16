@@ -15,12 +15,12 @@ const CVContainer = (props) => {
            <Grid.Column>
             <CVHeader 
             title={props.cv.title} 
-            photo={props.photo}
+            photo={props.cv.photo}
             />
             <div style={{ margin: '5em' }}>
              <CVContactDetails
              contactDetails={props.cv.contact_details}
-             email={props.email}  />
+             email={props.cv.email}  />
              </div>
             </Grid.Column>
            
