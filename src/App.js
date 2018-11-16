@@ -15,6 +15,7 @@ class App extends Component {
     email: null,
     photo: null,
     allUserCVs: [],
+    allCVs: [],
     selectedCV: null
   };
 
@@ -31,7 +32,7 @@ class App extends Component {
   };
 
   selectCV = (id) => {
-    let foundCV = this.state.allUserCVs.find(cv => cv.id == id)
+    let foundCV = this.state.allCVs.find(cv => cv.id == id)
     this.setState({selectedCV: foundCV})
   }
 
@@ -57,13 +58,15 @@ class App extends Component {
         this.signin(user);
         this.props.history.push("/dashboard");
       })
-      .then(() => API.getUserCvs())
-      .then(resp => this.setState({allUserCVs: resp}))
+      // .then(() => API.getUserCvs())
+      .then(() => API.getAllCvs())
+      // .then(resp => this.setState({allUserCVs: resp}))
+      .then(resp => this.setState({allCVs: resp}))
       .catch(error => this.props.history.push("/signin"));
   }
 
   render() {
-    const { email, allUserCVs, selectedCV, photo } = this.state;
+    const { email, allUserCVs, allCVs, selectedCV, photo } = this.state;
     const { signin, signout, selectCV, setPhoto, resetSelectCV } = this;
     return (
       <div className="App">
@@ -85,6 +88,7 @@ class App extends Component {
           render={props => <Dashboard {...props} 
           email={email} 
           allUserCVs={allUserCVs} 
+          allCVs={allCVs} 
           selectCV={selectCV} 
           selectedCV={selectedCV} 
           resetSelectCV={resetSelectCV}

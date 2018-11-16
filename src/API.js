@@ -72,6 +72,11 @@ class API {
     }).then(resp => resp.json())
   }
 
+  static getAllCvs() {
+    return fetch('http://localhost:3001/get_all_cvs', {
+    }).then(resp => resp.json())
+  }
+
   static newTextItem(title, content, cv_id) {
     return (
       fetch("http://localhost:3001/text_items"),

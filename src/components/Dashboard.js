@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    let selectOptions = this.props.allUserCVs.map(cv => {
+    let selectOptions = this.props.allCVs.map(cv => {
       return <option value={`${cv.id}`}>{cv.title}</option>
       }
     )
@@ -31,8 +31,7 @@ class Dashboard extends React.Component {
       <div>
         <>
         <div>
-        { this.props.allUserCVs === [] ?
-          null:
+        
           <>
           <Segment placeholder>
           <Grid columns={3} stackable textAlign='center'>
@@ -67,7 +66,7 @@ class Dashboard extends React.Component {
           </Grid>
           </Segment>
           </>
-        }
+        
         </div>
         {this.state.renderCVForm ? <NewCVForm /> : null}
         {this.props.selectedCV ? <CVContainer cv={this.props.selectedCV} photo={this.props.photo} savePhoto={this.props.savePhoto} email={this.props.email} /> : null }
