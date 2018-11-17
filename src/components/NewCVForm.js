@@ -106,11 +106,10 @@ class NewCVForm extends React.Component {
   };
 
   showContactForms = () => {
-    let counter = 0;
     let contactArr = [];
-    for (counter; counter < this.state.numSkills; counter++) {
+    
       contactArr.push(<ContactFormItem handleClick={this.handleContactClick} />);
-    }
+    
     return contactArr;
   };
 
@@ -118,9 +117,9 @@ class NewCVForm extends React.Component {
     const { title, bio, experience, education, skills, contact, photo} = this.state;
     API.newCV(title, bio, experience, education, skills, contact, photo).then(data => {
       if (data.error) {
-        alert("Din't work!");
+        alert("Nope");
       } else {
-        console.log(data);
+        this.props.renderCVForm();
       }
     });
   };

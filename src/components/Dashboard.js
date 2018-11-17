@@ -68,7 +68,7 @@ class Dashboard extends React.Component {
           </>
         
         </div>
-        {this.state.renderCVForm ? <NewCVForm /> : null}
+        {this.state.renderCVForm ? <NewCVForm renderCVForm={this.renderCVForm} selectCV={this.props.selectCV} /> : null}
         {this.props.selectedCV ? <CVContainer cv={this.props.selectedCV} photo={this.props.photo} savePhoto={this.props.savePhoto} email={this.props.email} /> : null }
         
         
